@@ -9,7 +9,6 @@ import android.support.test.espresso.Espresso;
 import android.support.test.espresso.action.ViewActions;
 import android.support.test.espresso.matcher.ViewMatchers;
 import android.test.ActivityInstrumentationTestCase2;
-import android.util.Log;
 import android.widget.TextView;
 
 import static android.support.test.espresso.Espresso.onView;
@@ -59,6 +58,8 @@ public class AcmeActivityTest extends ActivityInstrumentationTestCase2<AcmeActiv
         assertNotNull("mTestFortuneTextview is null", mTestFortuneTextview);
         assertNotNull("mFab is null", mFab);
     }
+
+
     public void  testDataFetched(){
 
         getActivity();
@@ -66,6 +67,18 @@ public class AcmeActivityTest extends ActivityInstrumentationTestCase2<AcmeActiv
                 .perform(ViewActions.click());
 
         assertNotNull("mTestFortuneTextview content is null after fetching",mTestFortuneTextview.getText());
+
+    }
+
+
+    public void  testResponseDisplayed(){
+
+        getActivity();
+        Espresso.onView(ViewMatchers.withId(R.id.fab))
+                .perform(ViewActions.click());
+
+
+        assertFalse("Does not get data from api", mTestFortuneTextview.getText().toString().contains("Response:"));
 
     }
 

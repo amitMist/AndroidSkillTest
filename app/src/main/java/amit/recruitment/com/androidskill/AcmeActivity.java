@@ -163,7 +163,11 @@ public class AcmeActivity extends AppCompatActivity {
 
                         stopLoading();
                         // TODO: Handle error
-                        Log.d(APP_TAG,error.getMessage());
+                        if (error.getMessage()!=null)
+                            Log.d(APP_TAG, error.getMessage().toString());
+                        else
+                            Log.d(APP_TAG, "VolleyError message is null");
+
                         mFortuneTextview.setText("Error : "+error.getLocalizedMessage());
                     }
                 });
