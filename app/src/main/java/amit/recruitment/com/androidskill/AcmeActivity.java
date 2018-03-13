@@ -162,7 +162,7 @@ public class AcmeActivity extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
 
                         stopLoading();
-                        // TODO: Handle error
+
                         if (error.getMessage()!=null)
                             Log.d(APP_TAG, error.getMessage().toString());
                         else
